@@ -10,6 +10,8 @@
 #ifndef _NFD_H
 #define _NFD_H
 
+#define DllExport __declspec( dllexport )
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -36,35 +38,35 @@ typedef enum {
 /* nfd_<targetplatform>.c */
 
 /* single file open dialog */    
-nfdresult_t NFD_OpenDialog( const nfdchar_t *filterList,
+DllExport nfdresult_t NFD_OpenDialog( const nfdchar_t *filterList,
                             const nfdchar_t *defaultPath,
                             nfdchar_t **outPath );
 
 /* multiple file open dialog */    
-nfdresult_t NFD_OpenDialogMultiple( const nfdchar_t *filterList,
+DllExport nfdresult_t NFD_OpenDialogMultiple( const nfdchar_t *filterList,
                                     const nfdchar_t *defaultPath,
                                     nfdpathset_t *outPaths );
 
 /* save dialog */
-nfdresult_t NFD_SaveDialog( const nfdchar_t *filterList,
+DllExport nfdresult_t NFD_SaveDialog( const nfdchar_t *filterList,
                             const nfdchar_t *defaultPath,
                             nfdchar_t **outPath );
 
 
 /* select folder dialog */
-nfdresult_t NFD_PickFolder( const nfdchar_t *defaultPath,
+DllExport nfdresult_t NFD_PickFolder( const nfdchar_t *defaultPath,
                             nfdchar_t **outPath);
 
 /* nfd_common.c */
 
 /* get last error -- set when nfdresult_t returns NFD_ERROR */
-const char *NFD_GetError( void );
+DllExport const char *NFD_GetError( void );
 /* get the number of entries stored in pathSet */
-size_t      NFD_PathSet_GetCount( const nfdpathset_t *pathSet );
+DllExport size_t      NFD_PathSet_GetCount( const nfdpathset_t *pathSet );
 /* Get the UTF-8 path at offset index */
-nfdchar_t  *NFD_PathSet_GetPath( const nfdpathset_t *pathSet, size_t index );
+DllExport nfdchar_t  *NFD_PathSet_GetPath( const nfdpathset_t *pathSet, size_t index );
 /* Free the pathSet */    
-void        NFD_PathSet_Free( nfdpathset_t *pathSet );
+DllExport void        NFD_PathSet_Free( nfdpathset_t *pathSet );
 
 
 #ifdef __cplusplus
